@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mai Huong · Product Intern Portfolio 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --cream:   #FAF7F0;
+    --rose:    #E8B4B8;
+    --navy:    #1C2B4A;
+    --coral:   #C96A65;
+    --olive:   #8B9D77;
+    --sand:    #F0E9D8;
+    --muted:   #6B7280;
+    --white:   #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,247,240,.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(200,180,160,.25);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 60px;
+  }
+  nav .logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; font-size: 1.2rem;
+    color: var(--navy);
+    letter-spacing: -.5px;
+  }
+  nav .logo span { color: var(--coral); }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul a {
+    text-decoration: none; font-size: .85rem; font-weight: 500;
+    color: var(--muted); letter-spacing: .04em; text-transform: uppercase;
+    transition: color .2s;
+  }
+  nav ul a:hover { color: var(--coral); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    align-items: center;
+    gap: 4rem;
+    padding: 80px 10vw 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -120px; right: -120px;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,180,184,.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: 40px; left: 8vw;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139,157,119,.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-text { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: .75rem; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 1.2rem;
+    padding: .35rem .9rem;
+    border: 1.5px solid var(--rose);
+    border-radius: 999px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -.03em;
+    margin-bottom: 1.4rem;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--coral);
+  }
+
+  .hero-bio {
+    font-size: 1rem; color: var(--muted);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: .75rem 1.8rem;
+    border-radius: 999px;
+    font-size: .875rem; font-weight: 600;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+  .btn-primary { background: var(--navy); color: var(--white); }
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--navy);
+    color: var(--navy);
+  }
+
+  .hero-photo {
+    position: relative;
+    width: 340px;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* KHUNG ẢNH */
+  .photo-frame {
+    width: 340px;
+    height: 400px;
+
+    border-radius: 200px 200px 160px 160px;
+    background: linear-gradient(145deg, var(--rose) 0%, var(--sand) 100%);
+    box-shadow: 0 30px 80px rgba(28,43,74,.18);
+
+    overflow: hidden; /* 👈 QUAN TRỌNG */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ẢNH */
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    transform: scale(1.2);
+  }
+
+  /* badge */
+  .year-badge {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+
+    background: var(--coral);
+    color: var(--white);
+    font-size: .8rem;
+    font-weight: 700;
+    padding: .6rem 1.2rem;
+    border-radius: 999px;
+
+    box-shadow: 0 4px 16px rgba(201,106,101,.4);
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 80px 10vw; }
+  section + section { padding-top: 0; }
+
+  .section-label {
+    font-size: .72rem; font-weight: 700;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 2rem;
+    display: flex; align-items: center; gap: .7rem;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--rose);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700; line-height: 1.15;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── ABOUT GRID ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .info-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 24px rgba(28,43,74,.07);
+  }
+  .info-card h3 {
+    font-size: .78rem; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--coral); margin-bottom: 1rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1.2rem;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    font-size: .9rem;
+    color: var(--muted);
+    margin-bottom: .4rem; 
+  }
+  .contact-item svg { flex-shrink: 0; color: var(--coral); }
+
+  .edu-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .9rem; margin-bottom: .4rem;
+  }
+  .edu-row .school { font-weight: 600; color: var(--navy); }
+  .edu-row .years { color: var(--muted); font-size: .82rem; }
+  .edu-sub { font-size: .85rem; color: var(--muted); }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .skill-group h4 {
+    font-size: .78rem; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--coral); margin-bottom: 1rem;
+  }
+
+  .skill-tag {
+    display: inline-block;
+    background: var(--sand);
+    color: var(--navy);
+    font-size: .82rem; font-weight: 500;
+    padding: .4rem .9rem;
+    border-radius: 999px;
+    margin: .2rem .2rem .2rem 0;
+    transition: background .2s, color .2s;
+  }
+  .skill-tag:hover { background: var(--navy); color: var(--white); }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--sand); border-radius: 40px; margin: 0 2vw; padding: 80px 8vw; }
+
+  .project-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 40px rgba(28,43,74,.08);
+    margin-bottom: 2rem;
+  }
+
+  .project-header {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 700;
+  }
+  .project-badge {
+    font-size: .75rem; font-weight: 600;
+    background: var(--rose); color: var(--navy);
+    padding: .3rem .9rem; border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .project-desc { font-size: .95rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.75; }
+  .project-desc strong { color: var(--navy); }
+
+  .contrib-list {
+    list-style: none; margin-top: 1rem;
+  }
+  .contrib-list li {
+    font-size: .9rem; color: var(--muted);
+    padding: .4rem 0 .4rem 1.5rem;
+    border-bottom: 1px dashed rgba(200,180,160,.4);
+    position: relative;
+  }
+  .contrib-list li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--coral); font-weight: 700;
+  }
+
+  .sub-section {
+    margin-top: 2rem;
+  }
+  .sub-section h4 {
+    font-size: .78rem; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--olive); margin-bottom: 1rem;
+  }
+
+  /* Two App Sections */
+  .app-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .app-sections .sub-section {
+    margin-top: 2rem;
+  }  
+
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .app-tile {
+    background: var(--sand);
+    border-radius: 16px;
+    padding: 1.2rem;
+    text-align: center;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--navy);
+    display: flex; flex-direction: column;
+    align-items: center; gap: .5rem;
+  }
+  .app-tile .icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--rose);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  /* ── LEARNINGS ── */
+  .learnings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .learning-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 1.2rem;
+    border-left: 4px solid var(--coral);
+    box-shadow: 0 4px 20px rgba(28,43,74,.06);
+    font-size: .9rem; color: var(--muted); line-height: 1.55;
+  }
+  .learning-card strong {
+    display: block;
+    color: var(--navy);
+    font-size: .95rem;
+    margin-bottom: 0;
+  }
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 60px 10vw 40px;
+    color: var(--muted);
+    font-size: .85rem;
+  }
+  footer .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 900;
+    color: var(--navy); margin-bottom: .5rem;
+  }
+  footer .footer-name span { color: var(--coral); }
+  footer p { margin-top: .4rem; }
+  footer a { color: var(--coral); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 60px 6vw; min-height: auto; }
+    .hero-photo { display: none; }
+    .about-grid, .skills-grid { grid-template-columns: 1fr; }
+    .app-sections { grid-template-columns: 1fr; }
+    section { padding: 60px 6vw; }
+    #projects { padding: 60px 6vw; margin: 0 1vw; }
+  }
+
+  /* ── EMBEDS & VIDEOS ── */
+  .video-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .video-frame {
+    width: 100%;
+    max-width: 1100px; /* tăng từ 800 → 1100 */
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,.12);
+  }
+
+  .video-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+  .embed-wrap { display: flex; flex-direction: column; gap: 1rem; }
+
+  .link-btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    text-decoration: none;
+    font-size: .82rem; font-weight: 600;
+    color: var(--coral);
+    padding: .5rem 1.1rem;
+    border: 1.5px solid var(--rose);
+    border-radius: 999px;
+    width: fit-content;
+    transition: background .2s, color .2s;
+  }
+  .link-btn:hover { background: var(--coral); color: var(--white); }
+
+  /* ── PHONE FRAMES ── */
+  .phone-row {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .phone-frame { flex: 1; min-width: 120px; max-width: 160px; }
+  .phone-shell {
+    background: var(--navy);
+    border-radius: 28px;
+    padding: 10px 8px 14px;
+    box-shadow: 0 12px 40px rgba(28,43,74,.25);
+    position: relative;
+  }
+  .phone-notch {
+    width: 50px; height: 8px;
+    background: #0e1a2e;
+    border-radius: 0 0 8px 8px;
+    margin: 0 auto 6px;
+  }
+  .phone-screen {
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 361 / 648;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .phone-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+  }
+
+  /* ── LAPTOP FRAMES ── */
+  .laptop-row {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .laptop-frame { flex: 1; min-width: 180px; }
+  .laptop-shell {
+    background: var(--navy);
+    border-radius: 10px 10px 0 0;
+    padding: 10px 10px 6px;
+    box-shadow: 0 8px 30px rgba(28,43,74,.2);
+  }
+  .laptop-cam {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #2d4a7a;
+    margin: 0 auto 5px;
+  }
+  .laptop-screen {
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 1890 / 901;
+    width: 100%;
+    background: #fff;
+  }
+  .laptop-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: top center;
+    display: block;
+  }
+  .laptop-base {
+    background: #2a3a56;
+    height: 10px;
+    border-radius: 0 0 8px 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .laptop-hinge {
+    width: 40px; height: 4px;
+    background: #1a2a40;
+    border-radius: 2px;
+  }
+
+  /* ── IMG PLACEHOLDER ── */
+  .img-placeholder {
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    color: var(--muted);
+    font-size: .72rem;
+    background: var(--cream);
+  }
+  .img-placeholder span { line-height: 1.5; }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── DOTS DECORATIVE ── */
+  .dots {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--rose);
+    margin: 0 .2rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Mai Huong <span>· Portfolio</span></div>
+  <ul>
+    <li><a href="#about">About Me</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Case Studies</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <span class="hero-eyebrow">Product Owner · 2026</span>
+    <h1>Hi, I'm<br><em>Mai Huong</em></h1>
+    <p class="hero-bio">
+      E-Commerce graduate with hands-on experience in business analysis, UI/UX validation, and digital product development through academic projects and internships. Passionate about understanding user behavior, mapping user journeys, and contributing to user-centered product solutions.
+    </p>
+    <div class="btn-group">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#about" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <div class="photo-frame">
+      <img class="hero-img"
+          src="https://i.postimg.cc/d1hVjfkQ/IMG-6455-Photoroom.png"
+          alt="Mai Huong" />
+    </div>
+
+    <div class="year-badge">· 2026 ·</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <h2 class="section-title reveal">Background & Education</h2>
+
+  <div class="about-grid">
+
+    <!-- CONTACT -->
+    <div class="info-card reveal" id="contact">
+      <h3><span class="dot"></span> Contact</h3>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="5" width="18" height="16" rx="2"/>
+            <path d="M16 3v4M8 3v4M3 11h18"/>
+          </svg>
+          09/04/2004
+        </div>
+
+        <div class="contact-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          0333 708 044
+        </div>
+
+        <div class="contact-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          huongntm9404@gmail.com
+        </div>
+
+        <div class="contact-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Thu Duc, TP.HCM
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="info-card reveal">
+      <h3><span class="dot"></span> Education</h3>
+
+      <div class="edu-row">
+        <span class="school">University of Economics and Law (VNU HCMC)</span>
+        <span class="years">2022 - 2026</span>
+      </div>
+
+      <div class="edu-sub">Bachelor of E-Commerce</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <h2 class="section-title reveal">Skills &amp; Expertise</h2>
+
+  <div class="skills-grid">
+    <div class="info-card reveal">
+      <div class="skill-group">
+        <h4>Hard Skills</h4>
+        <span class="skill-tag">Requirement Analysis</span>
+        <span class="skill-tag">User Journey Analysis</span>
+        <span class="skill-tag">UI/UX Validation</span>
+        <span class="skill-tag">Functional Testing</span>
+        <span class="skill-tag">UI/UX Design</span>
+        <span class="skill-tag">SQL Fundamentals</span>
+        <span class="skill-tag">SDLC</span>
+      </div>
+    </div>
+
+    <div class="info-card reveal">
+      <div class="skill-group">
+        <h4>Soft Skills</h4>
+        <span class="skill-tag">Product Thinking</span>
+        <span class="skill-tag">Analytical Thinking</span>
+        <span class="skill-tag">User-centric Mindset</span>
+        <span class="skill-tag">Communication</span>
+        <span class="skill-tag">Cross-functional Collaboration</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Case Studies</div>
+  <h2 class="section-title reveal">My Projects</h2>
+
+  <!-- Capstone Project -->
+  <div class="project-card reveal">
+    <div class="project-header">
+      <h3 class="project-title">Capstone Project - Habit Tracker Platform</h3>
+      <span class="project-badge">WeCamp Program · Team Capstone Project</span>
+    </div>
+
+    <div class="project-desc">
+      <strong>Context:</strong> This project was developed as the final capstone of the WeCamp Program, aiming to simulate a real-world product development environment in an e-commerce domain.<br/>
+      <strong>Problem:</strong> Many users struggle to maintain consistent habits due to a lack of structured tracking, motivation, and progress visibility.<br/>
+      <strong>Solution:</strong> We designed a habit tracking platform that helps users create, monitor, and maintain daily habits through a simple and structured user experience.
+    </div>
+
+    <div class="sub-section">
+      <h4>My Contributions</h4>
+      <ul class="contrib-list">
+        <li>Reviewed system requirements with the team to help optimize user flows and ensure a smooth habit-tracking experience</li>
+        <li>Conducted hands-on testing on core features to ensure they worked correctly and remained user-friendly</li>
+        <li>Identified and documented functional issues and bugs with clear steps, reporting them directly to developers for fixing</li>
+        <li>Worked closely with team members to clarify requirements and support product refinement before release</li>
+      </ul>
+    </div>
+
+    <!-- Video Demo -->
+    <div class="sub-section">
+      <h4>Video Demo</h4>
+
+      <div class="video-wrap">
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/JzrdhK8ML2E"
+            title="Project Demo Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <a href="https://www.youtube.com/watch?v=JzrdhK8ML2E"
+        target="_blank"
+        class="link-btn"
+        style="margin-top:1rem;">
+        ▶ Watch on YouTube
+      </a>
+    </div>
+
+    <div class="sub-section">
+      <h4>Key Outcomes</h4>
+      <div class="learnings-grid">
+
+        <div class="learning-card">
+          <strong>Requirement Understanding</strong>
+          Improved ability to translate requirements into testable product behavior.
+        </div>
+
+        <div class="learning-card">
+          <strong>Quality Mindset</strong>
+          Strengthened ability to detect and document functional issues.
+        </div>
+
+        <div class="learning-card">
+          <strong>Collaboration</strong>
+          Worked closely with developers to clarify and refine features.
+        </div>
+
+        <div class="learning-card">
+          <strong>SDLC Exposure</strong>
+          Gained hands-on experience in the product development lifecycle.
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Pet Shop Mobile Application -->
+  <div class="project-card reveal">
+    <div class="project-header">
+      <h3 class="project-title">Pet Shop Mobile Application</h3>
+      <span class="project-badge">University Team Project</span>
+    </div>
+
+    <div class="project-desc">
+      <strong>Context:</strong> This project was developed as a university team assignment to simulate a real-world e-commerce product scenario, focusing on both customer and admin experiences in a pet shop ecosystem. The goal was to understand how users interact with product browsing, ordering, and management flows in a multi-role system.
+<br/>
+      <strong>Problem:</strong> Pet owners often need to switch between multiple channels to browse products, place orders, and manage pet-related purchases.<br/>
+      <strong>Solution:</strong> Designed a digital pet shop platform that allows customers to browse products, place orders, and track purchases while providing administrators with management tools.
+    </div>
+
+    <div class="sub-section">
+      <h4>My Contributions</h4>
+      <ul class="contrib-list">
+        <li>Participated in team discussions to define core features for both the customer app and the admin management system</li>
+        <li>Contributed ideas to optimize shopping and ordering flows for a better user experience</li>
+        <li>Sketched initial wireframes and designed basic mockups on Figma for key user screens</li>
+        <li>Collaborated with team members during development to clarify functional behavior</li>
+        <li>Performed manual testing to ensure features matched expected product logic</li>
+      </ul>
+    </div>
+
+    <!-- FIGMA LINK -->
+    <div class="sub-section">
+      <h4>Layout Figma - Paw-dicted</h4>
+      <a href="https://www.figma.com/design/2rbAal4dEOm7chywImFU78/Paw-dicted?node-id=36-2&t=c1nvymu4003QgnV3-0"
+         target="_blank" class="link-btn">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        View Layout on Figma
+      </a>
+    </div>
+
+    <div class="app-sections">
+      <!-- CLIENT APP -->
+      <div class="sub-section">
+        <h4>Client App</h4>
+        <div class="phone-row">
+          <div class="phone-frame">
+            <div class="phone-shell">
+              <div class="phone-notch"></div>
+              <div class="phone-screen img-placeholder">
+                <img src="https://i.postimg.cc/YCXSRc7J/image.png" alt="Client App 1" />
+              </div>
+            </div>
+          </div>
+          <div class="phone-frame">
+            <div class="phone-shell">
+              <div class="phone-notch"></div>
+              <div class="phone-screen img-placeholder">
+                <img src="https://i.postimg.cc/cHSP8HjN/image-(1).png" alt="Client App 2" />
+              </div>
+            </div>
+          </div>
+          <div class="phone-frame">
+            <div class="phone-shell">
+              <div class="phone-notch"></div>
+              <div class="phone-screen img-placeholder">
+                <img src="https://i.postimg.cc/vmRNpTG5/image-(2).png" alt="Client App 3" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="https://drive.google.com/file/d/1I1jXSbcnOZBsFN97fnpxuPK3E7bHPgTi/view?usp=drive_link" target="_blank" class="link-btn" style="margin-top:1rem;">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Video Demo - Client App
+        </a>
+      </div>
+
+      <!-- ADMIN APP -->
+      <div class="sub-section">
+        <h4>Admin App</h4>
+        <div class="phone-row">
+          <div class="phone-frame">
+            <div class="phone-shell">
+              <div class="phone-notch"></div>
+                <div class="phone-screen img-placeholder">
+                  <img src="https://i.postimg.cc/br5jmYnb/Screenshot-2025-07-01-081512.png" alt="Client App 1" />
+                </div>          
+              </div>
+          </div>
+          <div class="phone-frame">
+            <div class="phone-shell">
+              <div class="phone-notch"></div>
+              <div class="phone-screen img-placeholder">
+                <img src="https://i.postimg.cc/4y0TW4cp/Screenshot-2025-07-01-082009.png" alt="Admin App 2" />
+              </div>
+            </div>
+          </div>
+          <div class="phone-frame">
+            <div class="phone-shell">
+              <div class="phone-notch"></div>
+              <div class="phone-screen img-placeholder">
+                <img src="https://i.postimg.cc/vTKd08n1/Screenshot-2025-07-01-082417.png" alt="Admin App 3" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="https://drive.google.com/file/d/1KU-U4ddlyZErf9_Y66nOTnxbidW_UhgS/view?usp=sharing" target="_blank" class="link-btn" style="margin-top:1rem;">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Video Demo - Admin App
+        </a>
+      </div>
+    </div>
+
+    <!-- ADMIN WEBSITE -->
+    <div class="sub-section">
+      <h4>Admin Website</h4>
+      <div class="laptop-row">
+        <div class="laptop-frame">
+          <div class="laptop-shell">
+            <div class="laptop-cam"></div>
+            <div class="laptop-screen img-placeholder">
+              <img src="https://i.postimg.cc/rpDZ9GjL/image-(3).png" alt="Admin Web 1" />
+            </div>
+          </div>
+          <div class="laptop-base"><div class="laptop-hinge"></div></div>
+        </div>
+        <div class="laptop-frame">
+          <div class="laptop-shell">
+            <div class="laptop-cam"></div>
+            <div class="laptop-screen img-placeholder">
+              <img src="https://i.postimg.cc/YSvDxNRB/Screenshot-2025-07-01-014215.png" alt="Admin Web 2" />
+            </div>
+          </div>
+          <div class="laptop-base"><div class="laptop-hinge"></div></div>
+        </div>
+        <div class="laptop-frame">
+          <div class="laptop-shell">
+            <div class="laptop-cam"></div>
+            <div class="laptop-screen img-placeholder">
+              <img src="https://i.postimg.cc/PqCVMb4g/Screenshot-2025-07-01-015755.png" alt="Admin Web 3" />
+            </div>
+          </div>
+          <div class="laptop-base"><div class="laptop-hinge"></div></div>
+        </div>
+      </div>
+      <a href="https://drive.google.com/file/d/1KU-U4ddlyZErf9_Y66nOTnxbidW_UhgS/view?usp=sharing" target="_blank" class="link-btn" style="margin-top:1rem;">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Video Demo - Admin Website
+      </a>
+    </div>
+
+    <!-- KEY OUTCOMES -->
+    <div class="sub-section">
+      <h4>Key Outcomes</h4>
+      <div class="learnings-grid">
+
+        <div class="learning-card">
+          <strong>Product Thinking</strong>
+          Improved understanding of end-to-end user journey and product flow.
+        </div>
+
+        <div class="learning-card">
+          <strong>Requirements & Flow</strong>
+          Strengthened ability to structure user requirements into flows.
+        </div>
+
+        <div class="learning-card">
+          <strong>UI/UX Awareness</strong>
+          Learned to evaluate design against usability and functionality.
+        </div>
+
+        <div class="learning-card">
+          <strong>Teamwork</strong>
+          Improved collaboration during design and development phases.
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Mai Huong <span>· Portfolio</span></div>
+  <p style="margin-top:.8rem;">
+    <a href="mailto:huongntm9404@gmail.com">huongntm9404@gmail.com</a>
+    &nbsp;·&nbsp;
+    <a href="tel:0333708044">0333 708 044</a>
+  </p>
+  <p style="margin-top:2rem; font-size:.78rem; opacity:.5;">© 2026 Nguyen Thi Mai Huong. All rights reserved.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: .15 });
+  reveals.forEach(r => io.observe(r));
+</script>
+</body>
+</html>
